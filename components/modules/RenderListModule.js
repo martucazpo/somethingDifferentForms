@@ -18,7 +18,7 @@ const RenderListModule = (
   editId,
   editHandler,
   inputHandler,
-  value1
+  value1,
 ) => {
   const section = document.createElement("section");
   section.classList.add("list-section");
@@ -29,14 +29,14 @@ const RenderListModule = (
         arr,
         section,
         "task",
-        true,
+        "dedit",
         deleteHandler,
         toggleHandler,
         edit,
         editId,
         editHandler,
         inputHandler,
-        value1
+        value1,
       );
   el.append(section);
 };

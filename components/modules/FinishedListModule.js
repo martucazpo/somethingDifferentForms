@@ -9,14 +9,14 @@ const FinishedText = (arr, el) =>{
     el.append(div)
 }
 
-const FinishedListModule = (arr, el) =>{
+const FinishedListModule = (arr, el, restoreHandler) =>{
     const section = document.createElement("section")
     section.classList.add("finished-section")
     FinishedText(arr, section)
     let div = document.createElement("div")
     div.classList.add("finished-list")
     section.append(div)
-    List(arr,div,false,false)
+    List(arr,div,"task","redo",null,null,null,null,null,null,null, restoreHandler)
     el.append(section)
 }
 

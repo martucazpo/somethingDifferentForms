@@ -33,10 +33,10 @@ const handleDelete = (id) => {
   let allTheOthers = state.tasks.filter((item) => item.id !== id);
   let theOne = state.tasks.filter(item => item.id === id)
   if(state.finished.length <= 5){
-    state.finished.push(theOne[0].task)
+    state.finished.push(theOne[0])
   } else {
     state.finished.shift()
-    state.finished.push(theOne[0].task)
+    state.finished.push(theOne[0])
   }
   state.tasks = allTheOthers;
   render();
@@ -64,6 +64,14 @@ const handleEdit = (e,id) => {
   render()
 };
 
+const restoreTask = (id) =>{
+  let allTheOthers = state.finished.filter(item => item.id !== id)
+  let theOne = state.finished.filter(item => item.id === id)
+  state.tasks.push(theOne[0])
+  state.finished = allTheOthers
+  render()
+}
+
 const render = () => {
   root.innerHTML = "";
   HeaderModule(root);
@@ -81,8 +89,9 @@ const render = () => {
     handleEdit,
     handleInput,
     state.task,
+    restoreTask
   );
-  FinishedListModule(state.finished, main)
+  FinishedListModule(state.finished, main, restoreTask)
 };
 
 render();
